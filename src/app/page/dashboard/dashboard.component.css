@@ -1,0 +1,165 @@
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 60px  0 0;
+}
+
+.dashboard-header {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto 20px;
+  border-bottom: 1px solid #212529;
+}
+
+.dashboard-main-bottom, .dashboard-pagination {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dashboard-main-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+.dashboard-main-search form {
+  width: 325px;
+}
+
+.admin-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0 auto 15px;
+}
+
+.admin-action select {
+  width: 150px;
+}
+
+.admin-action label {
+  width: 250px;
+  margin: 0 10px 0 0;
+  padding: 7px 0;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.admin-action button {
+  margin-left: 10px;
+  padding: 0 10px;
+}
+
+.dashboard-main-table {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0;
+  border: 1px solid #ced4da;
+}
+
+.sn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75px;
+  padding: 5px 10px;
+  border-right: 1px solid #ced4da;
+}
+
+.sn label {
+  width: 25px;
+  text-align: center;
+}
+
+.initiator {
+  width: 75%;
+  padding: 5px 10px;
+  border-right: 1px solid #ced4da;
+}
+
+.request, .amount, .operation {
+  width: 25%;
+  padding: 5px 10px;
+  border-right: 1px solid #ced4da;
+}
+
+.link {
+  width: 20%;
+  padding: 5px 10px;
+}
+
+.dashboard-main-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 35px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.dashboard-main-row:hover {
+  background-color: #dfdfdf;
+}
+
+.dashboard-main-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 35px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ced4da;
+  color: #212529;
+  font-weight: 600;
+}
+
+.dashboard-pagination {
+  margin-top: 20px;
+}
+
+.page-link {
+  color: #363636;
+}
+
+.page-item.active .page-link {
+  background-color: #838383;
+  border: 1px solid #838383;
+}
+
+.btn-view {
+  padding: 0;
+  color: green;
+}
+
+.btn-close {
+  width: 120px;
+}
+
+.btn-dash-view {
+  display: block;
+  padding: 0 14px;
+  color: #353b39;
+}
+
+.btn-dash-view:hover {
+  color: #198754;
+}
+
+@media only screen and (max-width: 1000px) {
+  .dashboard-main-row {
+    overflow: scroll;
+  }
+}
+

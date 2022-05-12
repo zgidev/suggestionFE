@@ -1,0 +1,27 @@
+.view-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 470px;
+}
+
+.view-modal-body {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 20px;
+  /* height: 425px; */
+}
+
+.view-modal-close {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  bottom: 0;
+  /* width: 80px; */
+}
+
+label {
+  font-weight: 600;
+}

@@ -1,0 +1,39 @@
+<div class="initiate">
+  <div class="header">
+    <div class="initiate-header-logo">
+      <img src="assets/logo.png" alt="">
+    </div>
+    <div class="initiate-heading">
+      <h2>Staff Suggestion Form</h2>
+    </div>
+  </div>
+  <div class="form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="suggestionFomGroup">
+      <div class="form-row">
+        <label for="topic">Title</label>
+        <input type="text" name="title" id="title" [maxLength]="70" formControlName="title" class="form-control">
+      </div>
+      <div class="form-row">
+        <label for="suggestion">Suggestion</label>
+        <textarea
+          name="suggestion"
+          id="suggestion"
+          cols="30"
+          rows="10"
+          formControlName="suggestion"
+          class="form-control"
+        ></textarea>
+      </div>
+      <div class="form-row">
+        <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!suggestionFomGroup.valid"
+      >
+        Submit
+      </button>
+      </div>
+      <small *ngIf="postError" class="text-danger">Error submitting suggestion!</small>
+    </form>
+  </div>
+</div>

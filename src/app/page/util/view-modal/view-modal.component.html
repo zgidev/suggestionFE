@@ -1,0 +1,49 @@
+<div class="view-modal">
+  <div class="view-modal-body">
+    <h3>{{toTitleCase(suggestionData.title)}}</h3>
+    <p>{{suggestionData.description}}</p>
+  </div>
+
+  <form [formGroup]="commentFg" (ngSubmit)="treatSuggestion()">
+    <div class="" *ngIf="status !== 'treated'">
+      <label class="form-label" for="">Comment</label>
+      <textarea
+        class="form-control"
+        name="comment"
+        id="comment"
+        cols="30"
+        rows="5"
+        formControlName="comment"
+      ></textarea>
+    </div>
+  </form>
+  <div class="" *ngIf="status === 'treated'">
+    <label class="form-label" for="">Comment</label>
+    <textarea
+      class="form-control"
+      name="comment"
+      id="comment"
+      cols="30"
+      rows="5"
+      [value]="suggestionData.comment"
+      disabled
+    ></textarea>
+  </div>
+
+  <div class="view-modal-close">
+    <button
+      class="btn btn-success"
+      [disabled]="commentFg.invalid"
+      (click)="treatSuggestion()"
+      *ngIf="status !== 'treated'"
+    >
+      <span *ngIf="!treating">
+        Treat
+      </span>
+      <div *ngIf="treating" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </button>
+    <button class="btn btn-danger" mat-dialog-close>Close</button>
+  </div>
+</div>

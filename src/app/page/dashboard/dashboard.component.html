@@ -1,0 +1,119 @@
+<app-nav-header></app-nav-header>
+<div class="dashboard">
+  <app-sidebar></app-sidebar>
+  <div class="dashboard-main">
+    <div class="dashboard-header" *ngIf="pageParam !== ''">
+      <h3>{{toTitleCase(pageParam)}} Staff Suggestions</h3>
+    </div>
+    <div class="dashboard-main-bottom">
+      <div class="dashboard-main-search">
+        <form [formGroup]="actionFg" (ngSubmit)="onSubmit()">
+          <div class="admin-action">
+            <label for="action">Download Report:</label>
+            <select
+              class="form-select form-select-sm"
+              name=""
+              id="action"
+              formControlName="action"
+              (change)="selectChangeHandler($event)"
+            >
+              <option selected value="">Select Month</option>
+              <option selected value="all">All</option>
+              <option
+                *ngFor="let item of reportFilter"
+                value="{{item.id}}"
+              >
+                {{item.month}}
+              </option>
+            </select>
+
+            <button
+              type="submit"
+              class="btn btn-success"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Mark as"
+              [disabled]="!actionFg.valid || downloadDataList.length === 0"
+              (click)="excelexport.save()"
+            >
+              <span *ngIf="!treating">
+                <i class="fas fa-download"></i>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="dashboard-main-table">
+        <div class="dashboard-main-header">
+          <div class="sn">
+            <label for="check-all">S/N</label>
+          </div>
+          <div class="initiator">Title</div>
+          <div *ngIf="status === 'pending'" class="request">Date Submitted</div>
+          <div *ngIf="status === 'treated'" class="request">Date Treated</div>
+          <div class="sn">View</div>
+        </div>
+        <div class="dashboard-main-row" *ngFor="let item of pageContent; let i = index">
+          <div class="sn">
+            <label for="check-{{i}}">{{i + 1}}</label>
+          </div>
+          <div class="initiator">
+            {{toTitleCase(item['title'])}}
+          </div>
+          <div *ngIf="status === 'pending'" class="request">{{item['dateLogged']}}</div>
+          <div *ngIf="status === 'treated'" class="request">{{item['dateTreated']}}</div>
+          <div
+            class="sn"
+            (click)="viewHandler(i)"
+          >
+            <button type="button" class="btn btn-dash-view" data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <!-- <div class="amount">
+            <button class="btn btn-view" (click)="viewHandler()"> View </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-pagination">
+      <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+          <li
+            *ngFor="let item of paginatedSuggestions; let i = index"
+            [ngClass]="toInt(pageNo) === (i + 1) ? 'page-item active' : 'page-item'"
+          >
+            <!-- <a class="page-link" href="#" tabindex="-1">1</a> -->
+            <button
+              class="page-link"
+              (click)="routeHandler(i)"
+              [disabled]="toInt(pageNo) === (i + 1)"
+            >
+              {{i + 1}}
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<kendo-excelexport [data]="downloadData" [group]="reportGroup" fileName="{{downloadFileName}}" #excelexport>
+  <kendo-excelexport-column field="title" title="Title" [width]="200">
+  </kendo-excelexport-column>
+
+  <kendo-excelexport-column field="description" title="Description" [width]="200">
+  </kendo-excelexport-column>
+
+  <kendo-excelexport-column field="status" title="Status" [width]="200">
+  </kendo-excelexport-column>
+
+  <kendo-excelexport-column field="dateLogged" title="Date Logged" [width]="200">
+  </kendo-excelexport-column>
+
+  <kendo-excelexport-column field="dateTreated" title="Date Treated" [width]="200">
+  </kendo-excelexport-column>
+
+  <kendo-excelexport-column field="comment" title="Comment" [width]="200">
+  </kendo-excelexport-column>
+</kendo-excelexport>

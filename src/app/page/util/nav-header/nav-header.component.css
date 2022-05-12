@@ -1,0 +1,48 @@
+.nav-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50px;
+  padding: 10px 15px;
+  background-color: #C31B1A;
+  color: #ffffff;
+}
+
+.nav-header-logo {
+  width: 120px;
+}
+
+.nav-header-logo img {
+  width: 100%;
+}
+
+.nav-header-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.nav-header-welcome h6, .nav-header-welcome p {
+  margin: 7px 0;
+  line-height: 1;
+}
+
+.nav-header-welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.btn-logout {
+  height: 30px;
+  padding: 0 10px;
+  color: #dfbfbf;
+  border: 1px solid #a71515;
+}
+
+.btn-logout:hover {
+  color: #ffffff;
+  background-color: #a71515;
+}

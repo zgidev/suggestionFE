@@ -1,0 +1,16 @@
+<div class="sidebar">
+  <div class="sidebar-title">
+    <h4>Staff Suggestion</h4>
+  </div>
+  <hr>
+
+  <div [ngClass]="pathname === 'pending' ? 'sidebar-row-active' : 'sidebar-row'" (click)="routeHandler('pending')">
+    <p>Pending</p>
+  </div>
+  <div [ngClass]="pathname === 'treated' ? 'sidebar-row-active' : 'sidebar-row'" (click)="routeHandler('treated')">
+    <p>Treated</p>
+  </div>
+  <!-- <div [ngClass]="pathname === 'archived' ? 'sidebar-row-active' : 'sidebar-row'" (click)="routeHandler('archived')">
+    <p>Archived</p>
+  </div> -->
+</div>
